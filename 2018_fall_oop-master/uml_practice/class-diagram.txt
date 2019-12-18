@@ -1,0 +1,15 @@
+@startuml
+
+class Foo1{
+    __Simple Getter__
+    +getName()
+    +Address()
+
+    __Simple setter__
+    +setName()
+    __private data__
+    int age
+    __encrypted__
+    string password
+}
+@enduml

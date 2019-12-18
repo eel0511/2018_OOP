@@ -1,0 +1,92 @@
+@startuml
+class Graph{
+    + bool directed
+    + EdgeNode *edge[]
+    --
+    + Graph(bool)
+    + ~Graph()
+    + void insert_edge(int,int,int,bool)
+    + void print()
+
+}
+class dijkstra{
+    + void init_vars(bool[],int[],int[]);
+    + void dijkstra_shortest_path(Graph*, int[],int[],int[])
+    + void print_shortest_path(int,int)
+    + void print_distances(int,int)
+    + void make_and_print(Graph*,int,int,int[],int[])
+}
+class EdgeNode{
+    + int key
+    + int weight;
+    + EdgeNode *next;
+    --
+    + EdgeNode(int,int)
+}
+class AppController{
+    --public--
+    +void setGraph(Graph* g)
+    +Graph* getGraph()
+    +void setDijkstra (dijkstra dij)
+    +dijkstra getDijkstra()
+    +void run()
+    +void setFlo(flo f)
+    +flo getFlo()
+    +AppController()
+    +void fileuse(string s)
+    +void nofileuse()
+    +int inputStart()
+    +int inputArrive()
+    +void inputAndMake()
+    +void supprot_print_flo(Matrix<int> n,int start,int arrive)
+    --private--
+    +Graph* graph
+    +dijkstra dij
+    +flo fl
+}
+note right : car,walk
+class AppView{
+    + void output(string aString)
+    + void outputLine(string aString)
+    + int inputTailVertex()
+    + int inputHeadVertex()
+}
+class InputData{
+    + string InfoPath[][]
+    + Graph *graph
+    + string existDataCountSum
+    --
+    + Graph* getGraph()
+    + void setGraph(Graph*)
+    + string getInfoPath(int,int)
+    + void setInfoPath(int,int,string)
+    + string getExistDataCountSum()
+    + void setExistDataaCountSum(string)
+    --
+    + void readFileInfo(string)
+    + void inputDataToGraph()
+    + void writeFile()
+    + void addData(int,int,string)
+    + void deletEdge(int,int)
+
+}
+class flo{
+    + Matrix<int> make_flo(Graph*,int,int)
+}
+class Matrix{
+
+}
+
+InputData <-[dotted]- Graph
+Graph <-- EdgeNode
+main <-[dotted]- AppController
+dijkstra <-[dotted]- Graph
+flo <-[dotted]- Matrix
+flo <-[dotted]- Graph
+AppController <-[dotted]- dijkstra
+AppController <-[dotted]- flo
+AppController <-[dotted]- InputData
+AppController <-[dotted]- AppView
+
+
+@enduml
